@@ -1,0 +1,34 @@
+import telebot
+import base
+
+bot = telebot.TeleBot(base.TOKEN)
+
+print('bot created ...')
+
+@bot.message_handler(commands=['start'])
+def say_hello(message):
+    # print(message)
+    bot.send_message(message.chat.id, text=' به بات آموزشی ما خوش آمدید')
+
+@bot.message_handler(commands=['help', 'support'])
+def support(message):
+    bot.reply_to(message, text=' در صورت نیاز به پشتیبانی با شماره 1554 تماس بگیرید')
+
+
+@bot.message_handler(commands=['news'])
+def show_news(message):
+    markup = telebot.types.InlineKeyboardMarkup(row_width=2)
+
+    btn1 = telebot.types.InlineKeyboardButton(text='اخبار ورزشی', url='https://varzesh3.com')
+    btn2 = telebot.types.InlineKeyboardButton(text='اخبار عمومی', url='https://entekhab.ir')
+    btn3 = telebot.types.InlineKeyboardButton(text='اخبار اقتصادی', url='https://tradingview.com')
+    
+    markup.add(btn1, btn2, btn3)
+
+    bot.send_message(message.chat.id, text='یکی از گزینه های زیر را انتخاب کنید',
+                     reply_markup=markup)
+
+
+
+if name == '__main__':
+    bot.infinity_polling()
