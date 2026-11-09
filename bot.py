@@ -4,7 +4,7 @@ from telegram.ext import (
 )
 from telegram.request import HTTPXRequest
 
-TOKEN = "8911024888:AAFwQA3xp_uVWZjItENra0CykfvGnohTZU8"  
+TOKEN = "???"  
 
 
 def main_menu() -> InlineKeyboardMarkup:
